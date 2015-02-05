@@ -1,5 +1,7 @@
 /*
  * (c) Cloud for Beginners.
+ * 
+ * author: tmusabbir
  */
 package com.example.mapreduce;
 
@@ -14,8 +16,14 @@ import org.apache.hadoop.mapred.Reducer;
 import org.apache.hadoop.mapred.Reporter;
 
 
+/**
+ * The Class WordCountReducer.
+ */
 public class WordCountReducer extends MapReduceBase implements Reducer<Text, IntWritable, Text, IntWritable> {
 
+	/* (non-Javadoc)
+	 * @see org.apache.hadoop.mapred.Reducer#reduce(java.lang.Object, java.util.Iterator, org.apache.hadoop.mapred.OutputCollector, org.apache.hadoop.mapred.Reporter)
+	 */
 	public void reduce(Text key, Iterator<IntWritable> values, OutputCollector<Text, IntWritable> output,
 			Reporter reporter) throws IOException {
 		int sum = 0;
