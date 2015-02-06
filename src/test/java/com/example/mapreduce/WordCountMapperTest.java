@@ -44,7 +44,7 @@ public class WordCountMapperTest {
 
 	/**
 	 * Test word count.
-	 * 
+	 *
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@Test

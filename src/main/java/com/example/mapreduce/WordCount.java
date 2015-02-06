@@ -36,12 +36,6 @@ public class WordCount extends Configured implements Tool {
 	 * @see org.apache.hadoop.util.Tool#run(java.lang.String[])
 	 */
 	public int run(String[] args) throws Exception {
-		if (args.length != 2) {
-			LOGGER.error("Usage: word-count-0.0.1.jar [generic options] <input> <output>");
-			ToolRunner.printGenericCommandUsage(System.err);
-			return -1;
-		}
-
 		int ret = 0;
 		LOGGER.info("Starting word count job...");
 
@@ -75,18 +69,19 @@ public class WordCount extends Configured implements Tool {
 
 	/**
 	 * The main method.
-	 * 
+	 *
 	 * @param args the arguments
 	 * @throws Exception the exception
 	 */
 	public static void main(String[] args) throws Exception {
 		Log4jConfigurer.initLogging("classpath:META-INF/log4j.properties");
 		WordCount wc = new WordCount();
-		if (args != null && args.length > 0) {
+		if ((args == null) || (args != null && args.length != 2)) {
+			LOGGER.error("Usage: word-count-0.0.1.jar [generic options] <input> <output>");
+			ToolRunner.printGenericCommandUsage(System.err);
+		} else {
 			int exitCode = ToolRunner.run(wc, args);
 			System.exit(exitCode);
-		} else {
-			throw new Exception("Usage: com.example.mapreduce.WordCount -input [path] -output[path]");
 		}
 	}
 }
