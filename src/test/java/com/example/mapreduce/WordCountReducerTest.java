@@ -49,7 +49,7 @@ public class WordCountReducerTest {
 
 	/**
 	 * Test word count.
-	 * 
+	 *
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@Test
